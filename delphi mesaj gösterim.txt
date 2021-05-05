@@ -1,0 +1,14 @@
+cevap:integer;
+
+cevap:=Application.MessageBox('Emin Misin?', 'Tüm veriler kaybolacak', MB_YESNO);
+  if cevap=mrYes then
+	ShowMessge("Yes dedi.");
+
+cevap:=MesajDlg('Tüm Veriler Kaybolacak Emin Misin?',mtWarning,m0bYesNo,0);
+  if cevap=mrAbort then
+	ShowMessage('İptal dedi.');
+
+cevap:word;
+cevap:=MessageDlgPos('Tüm Veriler Kaybolacak Emin Misin?',mtİnformation, mbOKCancel, 0, 100, 250);
+  if cevap=mrOK then
+	ShowMessage('OK dedi');
