@@ -1,0 +1,65 @@
+//Formun altına
+EskiSaat, EskiDakika, EskiSaniyeX, EskiSaniyeY, EskiDakikaX, EskiDakikaY, EskiSaatX, EskiSaatY : integer;
+  //Saat hesaplamaları için global değişken tanımladım.
+
+
+
+var
+XSaniye, YSaniye, XDakika, YDakika, XSaat, YSaat:word;  // Hesaplamalar için değişkenlerimi tanımladım.
+Saat,Dakika,Saniye,Salise:word;                         //Sistem saatini almak için değişken tanımladım.
+begin
+DecodeTime(Now, Saat, Dakika, Saniye, Salise);          //Sistemden saati alıp değişkenlere aktardım.
+
+label1.Caption:=inttostr(Saat)+':'+inttostr(Dakika)+':'+inttostr(Saniye)+':'+inttostr(Salise);   //Aldığım saat verisini ekranda gösterdim.
+
+XSaniye:=250+Round(200*Sin(Saniye*6*Pi/180));           //Gelen saniye değerine karşılık saniyenin X'deki konumunu belirledim.
+YSaniye:=250-Round(200*Cos(Saniye*6*Pi/180));           //Gelen saniye değerine karşılık saniyenin Y'deki konumunu belirledim.
+
+XDakika:=250+Round(200*Sin(Dakika*6*Pi/180));           //Gelen dakika değerine karşılık dakikanın X'deki konumunu belirledim.
+YDakika:=250-Round(200*Cos(Dakika*6*Pi/180));           //Gelen dakika değerine karşılık dakikanın Y'deki konumunu belirledim.
+
+XSaat:=250+Round(150*Sin((Saat*30+Dakika/2)*Pi/180));   //Gelen saat ve dakika değerine karşılık saatin X'deki konumunu belirledim.
+YSaat:=250-Round(150*Cos((Saat*30+Dakika/2)*Pi/180));   //Gelen saat ve dakika değerine karşılık saatin Y'deki konumunu belirledim.
+
+  //Saniyeyi Sildik
+  Canvas.Pen.Color:=clBtnFace;        //Kalemin rengini arkaplan ile aynı renk yaptım.
+  Canvas.Pen.Width:=1;                //Çizginin kalınlığını 1 pixel yaptım.
+  Canvas.MoveTo(250,250);             //Kalemi merkez noktasına taşıdım.
+  Canvas.LineTo(EskiSaniyeX,EskiSaniyeY);   //Eski çizginin çizgi çizdim.
+
+  //Saniyeyi Çizdik
+  Canvas.Pen.Color:=clBlack;          //Kalemin rengini siyah yaptım.
+  Canvas.Pen.Width:=1;                //Çizginin kalınlığını 1 pixel yaptım.
+  Canvas.MoveTo(250,250);             //Kalemi merkez noktasına taşıdım.
+  Canvas.LineTo(XSaniye,YSaniye);     //Saniye çizgisini hesapladığım noktalara göre çizdim.
+  EskiSaniyeX:=XSaniye;               //En son çizdiğim saniye noktasının X kordinatını aldım.
+  EskiSaniyeY:=YSaniye;               //En son çizdiğim saniye noktasının Y kordinatını aldım.
+
+  //Dakikayı Sildik
+  Canvas.Pen.Color:=clBtnFace;        //Kalemin rengini arkaplan ile aynı renk yaptım.
+  Canvas.Pen.Width:=2;                //Çizginin kalınlığını 2 pixel yaptım.
+  Canvas.MoveTo(250,250);             //Kalemi merkez noktasına taşıdım.
+  Canvas.LineTo(EskiDakikaX,EskiDakikaY);   //Eski çizginin çizgi çizdim.
+
+  //Dakikayı Çizdik
+  Canvas.Pen.Color:=clGreen;          //Kalemin rengini yeşil yaptım.
+  Canvas.Pen.Width:=2;                //Çizginin kalınlığını 2 pixel yaptım.
+  Canvas.MoveTo(250,250);             //Kalemi merkez noktasına taşıdım.
+  Canvas.LineTo(XDakika,YDakika);     //Dakika çizgisini hesapladığım noktalara göre çizdim.
+  EskiDakikaX:=XDakika;               //En son çizdiğim dakika noktasının X kordinatını aldım.
+  EskiDakikaY:=YDakika;               //En son çizdiğim dakika noktasının Y kordinatını aldım.
+
+  //Saati Sildik
+  Canvas.Pen.Color:=clBtnFace;        //Kalemin rengini arkaplan ile aynı renk yaptım.
+  Canvas.Pen.Width:=3;                //Çizginin kalınlığını 3 pixel yaptım.
+  Canvas.MoveTo(250,250);             //Kalemi merkez noktasına taşıdım.
+  Canvas.LineTo(EskiSaatX,EskiSaatY);   //Eski çizginin çizgi çizdim.
+
+  //Saati Çizdik
+  Canvas.Pen.Color:=clRed;            //Kalemin rengini kırmızı yaptım.
+  Canvas.Pen.Width:=3;                //Çizginin kalınlığını 3 pixel yaptım.
+  Canvas.MoveTo(250,250);             //Kalemi merkez noktasına taşıdım.
+  Canvas.LineTo(XSaat,YSaat);         //Saat çizgisini hesapladığım noktalara göre çizdim.
+  EskiSaatX:=XSaat;                   //En son çizdiğim saat noktasının X kordinatını aldım.
+  EskiSaatY:=YSaat;                   //En son çizdiğim saat noktasının Y kordinatını aldım.
+End;
