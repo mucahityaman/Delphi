@@ -1,0 +1,75 @@
+unit Unit7;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls;
+
+type
+  TForm7 = class(TForm)
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    StringGrid1: TStringGrid;
+    Memo1: TMemo;
+    Memo2: TMemo;
+    Memo3: TMemo;
+    Memo4: TMemo;
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form7: TForm7;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm7.Button1Click(Sender: TObject);
+var
+  I,X: Integer;
+begin
+X:=0;
+while not(StringGrid1.Cells[0,X]='') do
+  X:=X+1;
+for I := 0 to 3 do
+begin
+  StringGrid1.Cells[i,x]:=InputBox('Veri Giriþ',StringGrid1.Cells[i,0]+' Giriniz:','');
+end;
+if StringGrid1.RowCount<=X then
+  StringGrid1.RowCount:=StringGrid1.RowCount+1;
+end;
+
+procedure TForm7.Button2Click(Sender: TObject);
+var K:integer;
+begin
+for K := 0 to StringGrid1.RowCount do
+begin
+  memo1.Lines.Add(StringGrid1.Cells[0,K]);
+  memo2.Lines.Add(StringGrid1.Cells[1,K]);
+  memo3.Lines.Add(StringGrid1.Cells[2,K]);
+  memo4.Lines.Add(StringGrid1.Cells[3,K]);
+end;
+memo1.Lines.SaveToFile('C:\Users\mucah\OneDrive\Masaüstü\Soru2\Ad.txt');
+memo2.Lines.SaveToFile('C:\Users\mucah\OneDrive\Masaüstü\Soru2\Soyad.txt');
+memo3.Lines.SaveToFile('C:\Users\mucah\OneDrive\Masaüstü\Soru2\SaatlikUcret.txt');
+memo4.Lines.SaveToFile('C:\Users\mucah\OneDrive\Masaüstü\Soru2\ToplamSaat.txt');
+end;
+
+procedure TForm7.FormCreate(Sender: TObject);
+begin
+StringGrid1.Cells[0,0]:='Ad';
+StringGrid1.Cells[1,0]:='Soyad';
+StringGrid1.Cells[2,0]:='Saatlik Ücret';
+StringGrid1.Cells[3,0]:='Toplam Saat';
+end;
+
+end.
