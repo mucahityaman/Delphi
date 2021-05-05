@@ -1,0 +1,59 @@
+cevap:integer;
+
+cevap:=Application.MessageBox('Emin Misin?', 'Tüm veriler kaybolacak', MB_YESNO+MB_ICONWARNING);
+  if cevap=mrYes then
+	ShowMessge("Yes dedi.");
+
+cevap:=MesajDlg('Emin misin',mtWarning,m0bYesNo,0);
+  if cevap=mrAbort then
+	ShowMessage('İptal dedi.');
+
+cevap:word;
+cevap:=MessageDlgPos('Silinecek',mtİnformation, mbOKCancel, 0, 100, 250);
+  if cevap=mrOK then
+	ShowMessage('OK dedi');
+
+YAŞ HESABI
+Yukarı Ekle  System.DateUtils
+if YearsBetween(now,monthcalendar1.Date) < 18
+
+TERSTEN YAZMA
+edit2.Text:= Copy(edit1.Text,length(edit1.Text),1)+edit2.Text;
+
+COLOR DİALOG
+ColorDialog1.Execute;
+form1.Color:=ColorDialog1.Color;
+
+FONT DİALOG
+FontDialog.Execute;
+memo1.font.name:=FontDialog1.font.name;
+
+PASSWORD CHAR
+if edit1.PasswordChar='*' then
+	edit1.PasswordChar=#0
+else
+	edit1.PasswordChar='*';
+
+
+PROECT>VİEWSOURCES>ApplicationCreate
+
+ChildForm 35.Ders
+
+StatusBar1.Panels[2].Text:=inttostr(Length(memo1.Text));
+
+Chart1.Series[0].Add(55,'Özer',clRed);
+Chart1.Series[0].Add(55,'Özer', Chart1.Series[0].SeriesColor);
+
+canvas.LineTo(100,100);
+canvas.MoveTo(100,200);
+canvas.Pen.Color:=clBlue;
+canvas.Pen.Color:=RGB(200,100,100);
+canvas.Pen.Width:=5; //çalışmıyor.
+canvas.Pen.Style:=psDash; //kesik çizgili
+canvas.Rectangle(280,100,320,200);
+canvas.RoundRect(280,100,320,200,25,25);
+canvas.Brush.Color:=clYellow;
+canvas.TextOut(250,200,'Özer');
+canvas.Font.Name:='Consolas';
+canvas.Font.Stye:=[fsBold,fsItalic];
+
