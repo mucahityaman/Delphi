@@ -1,0 +1,25 @@
+VKİ
+    float boy,kilo;
+    cout << "Vücut Kitle İndeks Hesplama Programına Hoşgeldiniz..." << endl << "Boyunuzu Giriniz: ";
+    cin >> boy;
+    cout << "Kilonuzu Giriniz: ";
+    cin >> kilo;
+    cout << "Vücut Kitle İndeksiniz: " << kilo/((boy/100)*(boy/100));
+    return 0;
+
+YARIÇAP HESAPLAMA
+#include <iostream>
+#define PI 3.14159
+using namespace std;
+
+int main()
+{
+    int cap;
+    while (cap != 0)
+    {
+        cout << "Yarıcapı Giriniz: ";
+        cin >> cap;
+        cout << "Dairenin Alanı: " << PI*cap*2 << endl;
+    }
+    return 0;
+}
